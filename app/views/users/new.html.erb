@@ -30,10 +30,10 @@
 
 <%= form_for @user do |u| %>
   <%= u.label :username %>
-  <%= u.text_field :username %> <br>
-  <%= u.label :email %>
-  <%= u.text_field :email %> <br>
+  <%= u.text_field :username, :value => "superman" %> <br>
+  <%= u.label :email, "Your E-Mail" %>
+  <%= u.text_field :email, :placeholder => "your@email.com"  %> <br>
   <%= u.label :password %>
-  <%= u.text_field :password %> <br>
+  <%= u.text_field :password, :type => "password" %> <br>
   <%= u.submit "Create"%>
 <% end %>
