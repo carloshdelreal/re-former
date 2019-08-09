@@ -12,6 +12,7 @@
 </form>-->
 
 
+<!--
 <form accept-charset="UTF-8" action="/users" method="post">
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
@@ -24,3 +25,15 @@
 
   <input type="submit" value="Submit">
 </form>
+
+-->
+
+<%= form_for @user do |u| %>
+  <%= u.label :username %>
+  <%= u.text_field :username %> <br>
+  <%= u.label :email %>
+  <%= u.text_field :email %> <br>
+  <%= u.label :password %>
+  <%= u.text_field :password %> <br>
+  <%= u.submit "Create"%>
+<% end %>
