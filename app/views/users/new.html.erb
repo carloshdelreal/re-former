@@ -29,6 +29,14 @@
 -->
 
 <%= form_for @user do |u| %>
+  <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.each do |error, msg| %>
+        <li><%= "#{error} - #{msg}" %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= u.label :username %>
   <%= u.text_field :username, :placeholder => "superman" %> <br>
   <%= u.label :email, "Your E-Mail" %>
