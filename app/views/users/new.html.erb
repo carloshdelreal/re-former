@@ -28,6 +28,19 @@
 
 -->
 
+<!--
+<%= form_tag( users_path, method: "post") do %>
+  <%= label_tag( :username, "Username:") %>
+  <%= text_field(:user, :username ) %>
+  <%= label_tag(:email, "E-mail:") %>
+  <%= email_field(:user, :email ) %>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag(:password) %>  
+  <%= submit_tag("Create") %>
+<% end %>
+-->
+
+
 <%= form_for @user do |u| %>
   <% if @user.errors.any? %>
     <ul>
@@ -45,3 +58,6 @@
   <%= u.text_field :password, :type => "password" %> <br>
   <%= u.submit "Create"%>
 <% end %>
+
+
+
