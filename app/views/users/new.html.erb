@@ -1,0 +1,63 @@
+<!--<form accept-charset="UTF-8" action="/users" method="post">
+  <label for="username">Username:</label>
+  <input id="username"  name="username" type="text"><br>
+
+  <label for="email">e-mail:</label>
+  <input id="email" name="email" type="text"><br>
+
+  <label for="password">Password:</label>
+  <input id="password" name="password" type="password"><br>
+
+  <input type="submit" value="Submit">
+</form>-->
+
+
+<!--
+<form accept-charset="UTF-8" action="/users" method="post">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+<label for="username">Username:</label>
+  <input id="username"  name="user[username]" type="text"><br>
+  <label for="email">e-mail:</label>
+  <input id="email" name="user[email]" type="text"><br>
+<label for="password">Password:</label>
+  <input id="password" name="user[password]" type="password"><br>
+
+  <input type="submit" value="Submit">
+</form>
+
+-->
+
+<!--
+<%= form_tag( users_path, method: "post") do %>
+  <%= label_tag( :username, "Username:") %>
+  <%= text_field(:user, :username ) %>
+  <%= label_tag(:email, "E-mail:") %>
+  <%= email_field(:user, :email ) %>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag(:password) %>  
+  <%= submit_tag("Create") %>
+<% end %>
+-->
+
+
+<%= form_for @user do |u| %>
+  <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.each do |error, msg| %>
+        <li><%= "#{error} - #{msg}" %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= u.label :username %>
+  <%= u.text_field :username, :placeholder => "superman" %> <br>
+  <%= u.label :email, "Your E-Mail" %>
+  <%= u.text_field :email, :placeholder => "your@email.com"  %> <br>
+  <%= u.label :password %>
+  <%= u.text_field :password, :type => "password" %> <br>
+  <%= u.submit "Create"%>
+<% end %>
+
+
+
