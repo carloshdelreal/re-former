@@ -5,14 +5,18 @@ class UsersController < ApplicationController
   end
   
   def create
-      @user = User.new(user_params)
+    #It uses the user_params method form the UsersHelper Module
+    @user = User.new(user_params)
 
-      if @user.save
-        redirect_to new_user_path
-      else
-        render :new
-      end
+    if @user.save
+      flash.notice = "User '#{@user.username}' Created!"
+      redirect_to new_user_path
+    else
+      flash.notice = "User '#{@user.username}' Could not be Created"
+      render :new
+    end
   end
+
   def edit
     @user = User.find(params[:id])
   
@@ -31,4 +35,10 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
+
+  private 
+    def user_params
+      params.require(:user).permit(:username, :email, :password)
+    end
 end
